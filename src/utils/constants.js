@@ -4,8 +4,11 @@ export const APP_NAME = 'NetSuite Advanced Template PDF/HTML Friend'
 export const APP_SHORT_DESCRIPTION = 'Inspector y formateador de plantillas Advanced PDF/HTML'
 export const APP_VERSION = '1.0.0'
 
-/** Replace with your Ko-fi page URL. Opens only on explicit user click. */
-export const KOFI_URL = 'https://ko-fi.com/example'
+/** Ko-fi page. Opens only on explicit user click (extension CSP blocks remote widget scripts). */
+export const KOFI_ID = 'E6W7243KBT'
+export const KOFI_URL = `https://ko-fi.com/${KOFI_ID}`
+export const KOFI_BUTTON_LABEL = 'Support me on Ko-fi'
+export const KOFI_BUTTON_COLOR = '#72a4f2'
 
 export const DEFAULT_INDENT = '    '
 export const INDENT_OPTIONS = {

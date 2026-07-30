@@ -4,7 +4,7 @@
 
     <div class="toolbar">
       <div class="group">
-        <button type="button" class="btn-primary" :disabled="busy" @click="runFormat">Formatear</button>
+        <button type="button" class="btn-primary" :disabled="busy" @click="requestFormat">Formatear</button>
         <button type="button" :disabled="busy" @click="runValidate">Validar</button>
         <button type="button" :disabled="!formatted" @click="copyResult">Copiar resultado</button>
       </div>
@@ -121,6 +121,12 @@
       @clear-data="onClearLocalData"
     />
 
+    <FormatConfirmModal
+      v-if="showFormatConfirm"
+      @confirm="onFormatConfirm"
+      @cancel="showFormatConfirm = false"
+    />
+
     <div v-if="toast" class="toast" :class="toast.type">
       {{ toast.message }}
     </div>
@@ -135,6 +141,7 @@ import StructureTree from './components/StructureTree.vue'
 import ProblemsPanel from './components/ProblemsPanel.vue'
 import StatusBar from './components/StatusBar.vue'
 import SettingsModal from './components/SettingsModal.vue'
+import FormatConfirmModal from './components/FormatConfirmModal.vue'
 import DiffEditor from './components/DiffEditor.vue'
 import { formatTemplate } from './formatter/formatter.js'
 import { validateTemplate, formatSummaryText } from './validation/validator.js'
@@ -175,6 +182,7 @@ const panelSplit = ref(DEFAULT_PANEL_SPLIT)
 const structureFilter = ref('all')
 const structureCollapsed = ref(false)
 const showSettings = ref(false)
+const showFormatConfirm = ref(false)
 const busy = ref(false)
 const viewMode = ref('editor')
 const toast = ref(null)
@@ -249,6 +257,15 @@ function showToast(t) {
   toastTimer = setTimeout(() => {
     toast.value = null
   }, 3200)
+}
+
+function requestFormat() {
+  showFormatConfirm.value = true
+}
+
+function onFormatConfirm() {
+  showFormatConfirm.value = false
+  runFormat()
 }
 
 async function runFormat() {
