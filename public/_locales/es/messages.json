@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "NetSuite Advanced Template PDF/HTML Friend",
+    "description": "Nombre de la extensión"
+  },
+  "extDescription": {
+    "message": "Inspector y formateador local de plantillas Advanced PDF/HTML de NetSuite.",
+    "description": "Descripción de la extensión"
+  }
+}

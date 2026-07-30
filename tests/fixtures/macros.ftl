@@ -1,0 +1,1 @@
+<#macro header title="Invoice"><div class="header"><h1>${title}</h1></div></#macro><#macro footer><div class="footer">Page <pagenumber/> of <totalpages/></div></#macro><@header title="Test"/><@footer/>
